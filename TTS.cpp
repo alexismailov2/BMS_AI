@@ -1,7 +1,7 @@
 #include "TTS.h"
 
-#include "sherpa-onnx/c-api/cxx-api.h"
-#include "piper-phonemize/src/phonemize.hpp"
+#include <sherpa-onnx/c-api/cxx-api.h>
+#include <piper-phonemize/phonemize.hpp>
 #include <espeak-ng/speak_lib.h>
 
 #include <cstdint>

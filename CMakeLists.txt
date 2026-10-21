@@ -62,6 +62,13 @@ execute_process(
         "${CMAKE_BINARY_DIR}/piper_irina_model"
         RESULT_VARIABLE LINK_RESULT)
 
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/models")
+execute_process(
+        COMMAND "${CMAKE_COMMAND}" -E create_symlink
+        "${CMAKE_BINARY_DIR}/whisper_cpp_external-prefix/src/whisper_cpp_external/models/download-ggml-model.sh"
+        "${CMAKE_BINARY_DIR}/models/download-ggml-model.sh"
+        RESULT_VARIABLE LINK_RESULT)
+
 find_package(curl REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
