@@ -64,9 +64,15 @@ execute_process(
 
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/models")
 execute_process(
-        COMMAND "${CMAKE_COMMAND}" -E create_symlink
+        COMMAND "${CMAKE_COMMAND}" -E copy
         "${CMAKE_BINARY_DIR}/whisper_cpp_external-prefix/src/whisper_cpp_external/models/download-ggml-model.sh"
         "${CMAKE_BINARY_DIR}/models/download-ggml-model.sh"
+        RESULT_VARIABLE LINK_RESULT)
+
+execute_process(
+        COMMAND "${CMAKE_COMMAND}" -E create_symlink
+        "${CMAKE_CURRENT_LIST_DIR}/install/whisper.cpp/bin/whisper-cli"
+        "${CMAKE_BINARY_DIR}/whisper-cli"
         RESULT_VARIABLE LINK_RESULT)
 
 find_package(curl REQUIRED)
